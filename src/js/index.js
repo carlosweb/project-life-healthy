@@ -22,6 +22,28 @@ const navBg = () => {
 window.addEventListener('scroll', navBg)
 
 
+const target = document.querySelectorAll('[data-anime]')
+const animationClass= 'animate'
+
+const animeScroll = () => {
+    const windowTop = window.pageYOffset + ((window.innerHeight * 3) / 4)
+    target.forEach(element => {
+        if(windowTop > element.offsetTop){
+            element.classList.add(animationClass)
+        }else{
+            element.classList.remove(animationClass)
+        }
+    })
+}
+animeScroll()
+
+if(target.length){
+    window.addEventListener('scroll', animeScroll)
+}
+
+
+
+
 const getImc = event => {
     event.preventDefault()
     validationForm()

@@ -53,6 +53,27 @@ $inputBGgColor: #F9F9F9;
 }
 
 
+[data-anime] {
+    opacity: 0;
+    transition: .3s;
+}
+
+[data-anime="right"]{
+    transform: translate3d(-50px, 0, 0);
+}
+
+[data-anime="left"]{
+    transform: translate3d(60px, 0, 0);
+}
+
+[data-anime="top"]{
+    transform: translatey(-60px);
+}
+
+[data-anime].animate{
+    opacity: 1;
+    transform: translateX(0);
+}
 
 .container {
     width: 100%;
@@ -63,14 +84,14 @@ $inputBGgColor: #F9F9F9;
     background-size: cover;
     background-position: center center;
 
-
     header{
         nav{
             width: 100%;
             height: 80px;
 
             padding: 0 20px;
-            
+            z-index: 999;
+
             transition: 500ms ease-in-out;
 
             display: flex;
@@ -122,11 +143,9 @@ $inputBGgColor: #F9F9F9;
     .section-two{
         height: 100vh;
         
-
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
-    
             .box-form{
                 display: flex;
                 flex-direction: column;
@@ -198,6 +217,7 @@ $inputBGgColor: #F9F9F9;
                     }
                 }
                 .box-image{
+                    margin-top: 100px;
                     img{
                         width: 60%;
                         margin: 0 auto;
