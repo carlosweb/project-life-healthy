@@ -1,3 +1,10 @@
+/**
+ * @description Projeto de estudo JavaScript
+ * @author Cadu Eduardo Santos
+ * @date 30/08/2020
+ */
+
+
 let age = document.querySelector('#age')
 let weigthValue = document.querySelector('#weigthValue')
 let heightValue = document.querySelector('#heightValue')
@@ -7,6 +14,12 @@ let total = 0
 const tasks = document.querySelectorAll('.tasks [name=product]')
 const result = document.querySelector('.result')
 const boxImage = document.querySelector('.box-image')
+
+const navBg = () => {
+    const nav = document.querySelector('nav')
+    window.scrollY === 0 ? nav.classList.remove('active') : nav.classList.add('active')
+}
+window.addEventListener('scroll', navBg)
 
 
 const getImc = event => {
@@ -23,12 +36,14 @@ const validationForm = () => {
     const regexWeight = regex.test(weigthValue.value)
 
     age.value > 102 ? alert('Idade não valida') : age.value
+    regexHeight === false ? alert('Digite uma altura valida') : regexHeight
 
     if (heightValue.value === '' || weigthValue.value === '') {
         alert('Preencha os campos')
     }
-    if(regexHeight === false){
-        alert('digite uma altura valida')
+
+    if(weigthValue.value > 400  || regexWeight === false){
+        alert('Peso não valido')
     }
 }
 
@@ -86,7 +101,7 @@ const limites = [
     {
         descricao: 'Obesidade',
         min_value: 30,
-        max_value: 60,
+        max_value: 80,
         function(){
             
             box.innerHTML = `

@@ -44,32 +44,30 @@ const getDataUser = async () => {
 const loseWeight = async () => {
     areaProfessional.innerHTML = ''
     const user = await getDataUser()
-    user.forEach(item => {
+    user.forEach(({image, name, specialty, email, socialMedia }) => {
 
-        if (item.specialty === 'Nutricionista') {
+        if (specialty === 'Nutricionista') {
 
             const html = `
         <div class="bt-professional">
-                <img src="https://products.halyardhealth.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/a/face_shield2.jpg"
-                    alt="">
-                <h3>${item.name}</h3>
+                <img src="${image}"alt="">
+                <h3>${name}</h3>
                 <h4>Especialidade</h4>
-                <p>${item.specialty}</p>
+                <p>${specialty}</p>
                 <h4>Email</h4>
-                <p>${item.email}</p>
+                <p>${email}</p>
                 <h4>Rede Social</h4>
                 <ul>
-                    <li><a href="${item.socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
                 </ul>
         </div>
         `
             areaProfessional.innerHTML += html
         }
     })
-
 }
 
 /**
@@ -79,24 +77,23 @@ const loseWeight = async () => {
 const earnMuscle = async () => {
     areaProfessional.innerHTML = ''
     const user = await getDataUser()
-    user.forEach(item => {
-        if (item.specialty === 'BodyBuilder') {
+    user.forEach(({image, name, specialty, email, socialMedia }) => {
+        if (specialty === 'BodyBuilder') {
 
             const html = `
         <div class="bt-professional">
-                <img src="https://products.halyardhealth.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/a/face_shield2.jpg"
-                    alt="">
-                <h3>${item.name}</h3>
+                <img src="${image}"alt="">
+                <h3>${name}</h3>
                 <h4>Especialidade</h4>
-                <p>${item.specialty}</p>
+                <p>${specialty}</p>
                 <h4>Email</h4>
-                <p>${item.email}</p>
+                <p>${email}</p>
                 <h4>Rede Social</h4>
                 <ul>
-                    <li><a href="${item.socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
                 </ul>
         </div>
         `
@@ -112,23 +109,23 @@ const earnMuscle = async () => {
 const burnFat = async () => {
     areaProfessional.innerHTML = ''
     const user = await getDataUser()
-    user.forEach(item => {
-        if (item.specialty === 'Instrutor') {
+    user.forEach(({image, name, specialty, email, socialMedia }) => {
+        if (specialty === 'Instrutor') {
 
             const html = `
         <div class="bt-professional">
-                <img src="${item.image}"alt="">
-                <h3>${item.name}</h3>
+                <img src="${image}"alt="">
+                <h3>${name}</h3>
                 <h4>Especialidade</h4>
-                <p>${item.specialty}</p>
+                <p>${specialty}</p>
                 <h4>Email</h4>
-                <p>${item.email}</p>
+                <p>${email}</p>
                 <h4>Rede Social</h4>
                 <ul>
-                    <li><a href="${item.socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
                 </ul>
         </div>
         `
@@ -146,23 +143,23 @@ const bodyCare = async () => {
 
     areaProfessional.innerHTML = ''
     const user = await getDataUser()
-    user.forEach(item => {
-        if (item.specialty === 'Esteticista') {
+    user.forEach(({image, name, specialty, email, socialMedia }) => {
+        if (specialty === 'Esteticista') {
 
             const html = `
         <div class="bt-professional">
-                <img src="${item.image}"alt="">
-                <h3>${item.name}</h3>
+                <img src="${image}"alt="">
+                <h3>${name}</h3>
                 <h4>Especialidade</h4>
-                <p>${item.specialty}</p>
+                <p>${specialty}</p>
                 <h4>Email</h4>
-                <p>${item.email}</p>
+                <p>${email}</p>
                 <h4>Rede Social</h4>
                 <ul>
-                    <li><a href="${item.socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
-                    <li><a href="${item.socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.facebook}"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.instagram}"><i class="fab fa-instagram fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.whats}"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
+                    <li><a href="${socialMedia.youtube}"><i class="fab fa-youtube-square fa-2x"></i></a></li>
                 </ul>
         </div>
         `
