@@ -73,7 +73,7 @@ $inputBGgColor: #F9F9F9;
 
 [data-anime].animate{
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
 }
 
 .container {
@@ -366,6 +366,9 @@ $inputBGgColor: #F9F9F9;
 // responsive
 
 @media (max-width: 1200px ) {
+    .container .section-two {
+        height: 65vh;
+    }
     .container .section-one .content h1{
         font-size: 3rem;
     }
@@ -409,7 +412,7 @@ $inputBGgColor: #F9F9F9;
     }
 
     .container .section-one .content {
-        width: 101%;
+        width: 100%;
     }
 
     .container .section-one {
@@ -423,7 +426,7 @@ $inputBGgColor: #F9F9F9;
     }
 
     .container .section-two .result .text-help h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .large {
@@ -446,7 +449,7 @@ $inputBGgColor: #F9F9F9;
     }
 
     .container .section-three .box-goals h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .container .section-three .box-professionals h1 {
         color: #f2f2f2;
@@ -455,6 +458,10 @@ $inputBGgColor: #F9F9F9;
 
     .container .section-three .box-goals .buttons-goals {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container .section-three .box-goals .buttons-goals .bt-goal h3 {
+        font-size: 1rem;
     }
 
     .container .section-three .box-professionals .buttons-professional {
