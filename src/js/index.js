@@ -4,7 +4,6 @@
  * @date 30/08/2020
  */
 
-
 let age = document.querySelector('#age')
 let weigthValue = document.querySelector('#weigthValue')
 let heightValue = document.querySelector('#heightValue')
@@ -20,7 +19,6 @@ const navBg = () => {
     window.scrollY === 0 ? nav.classList.remove('active') : nav.classList.add('active')
 }
 window.addEventListener('scroll', navBg)
-
 
 const target = document.querySelectorAll('[data-anime]')
 const animationClass= 'animate'
@@ -41,15 +39,16 @@ if(target.length){
     window.addEventListener('scroll', animeScroll)
 }
 
-
-
-
 const getImc = event => {
     event.preventDefault()
     validationForm()
     total = Number(weigthValue.value) / Number(heightValue.value.replace(',', '.')) ** 2
     localStorage.setItem('IMC', total.toFixed(2))
-    render()
+    if (heightValue.value === '' || weigthValue.value === '' ) {
+        alert('Preencha os campos')
+    }else{
+        render()
+    }
 }
 
 const validationForm = () => {
@@ -58,14 +57,13 @@ const validationForm = () => {
     const regexWeight = regex.test(weigthValue.value)
 
     age.value > 102 ? alert('Idade não valida') : age.value
-    regexHeight === false ? alert('Digite uma altura valida') : regexHeight
-
-    if (heightValue.value === '' || weigthValue.value === '') {
-        alert('Preencha os campos')
-    }
+    // regexHeight === false ? alert('Digite uma altura valida') : regexHeight
 
     if(weigthValue.value > 400  || regexWeight === false){
         alert('Peso não valido')
+    }
+    if(heightValue.value.replace(',', '.') > 3.00 || regexHeight === false){
+        alert('Digite uma altura valida')
     }
 }
 
@@ -82,7 +80,6 @@ const limites = [
                 <h3>O seu IMC é <span class="imc-result">${Math.trunc(localStorage.getItem('IMC')) } kg/m2!</span> </h3>
                 <h3>Você está abaixo do indice normal, precisa ganhar mais massa.</h3>
                 <h3>De acordo com a sua altura de ${heightValue.value} e idade ${age.value} anos, o seu peso deveria ser no mínimo 60 kg.</h3>
-           
             `
         }
     },
@@ -116,7 +113,6 @@ const limites = [
                 <h3>De acordo com a sua altura: ${heightValue.value} e idade ${age.value}, 
                 o seu peso pode variar entre 47 kg e 64 kg, por isso continue tendo cuidado com 
                 a alimentação e praticando atividade física regularmente para manter o peso e prevenir doenças.</h3>
-           
             `
         }
     },
