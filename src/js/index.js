@@ -4,22 +4,36 @@
  * @date 30/08/2020
  */
 
+ /**
+ * Seletores
+ */
 let age = document.querySelector('#age')
 let weigthValue = document.querySelector('#weigthValue')
 let heightValue = document.querySelector('#heightValue')
 const box = document.querySelector('.box-result')
+const alert = document.querySelector('.alert')
 let total = 0
 
 const tasks = document.querySelectorAll('.tasks [name=product]')
 const result = document.querySelector('.result')
 const boxImage = document.querySelector('.box-image')
 
+
+/**
+ * Função mostrar nav bar 
+ * Quando houver evento de scroll
+ */
 const navBg = () => {
     const nav = document.querySelector('nav')
     window.scrollY === 0 ? nav.classList.remove('active') : nav.classList.add('active')
 }
 window.addEventListener('scroll', navBg)
 
+
+/**
+ * Função animeScroll
+ * Quando houver evento de scroll animar eventos adicionando a a class animate
+ */
 const target = document.querySelectorAll('[data-anime]')
 const animationClass= 'animate'
 
@@ -45,10 +59,20 @@ const getImc = event => {
     total = Number(weigthValue.value) / Number(heightValue.value.replace(',', '.')) ** 2
     localStorage.setItem('IMC', total.toFixed(2))
     if (heightValue.value === '' || weigthValue.value === '' ) {
-        alert('Preencha os campos')
+        heightValue.classList.add('wrong')
+        weigthValue.classList.add('wrong')
+        alert.style.display = 'block'
+        alert.innerHTML = 'Preencha os campos do peso e altura'
+        closeAlertMessage()
     }else{
         render()
     }
+}
+
+const closeAlertMessage = () => {
+    setTimeout(() => {
+        alert.style.display = 'none'
+    }, 4000)
 }
 
 const validationForm = () => {
@@ -56,14 +80,21 @@ const validationForm = () => {
     const regexHeight = regex.test(heightValue.value)
     const regexWeight = regex.test(weigthValue.value)
 
-    age.value > 102 ? alert('Idade não valida') : age.value
+    age.value > 102 ? age.classList.add('wrong') : age.value
     // regexHeight === false ? alert('Digite uma altura valida') : regexHeight
 
     if(weigthValue.value > 400  || regexWeight === false){
-        alert('Peso não valido')
+        weigthValue.classList.add('wrong')
+        alert.style.display = 'block'
+        alert.innerHTML = 'Insira um peso válido'
+        closeAlertMessage()
     }
     if(heightValue.value.replace(',', '.') > 3.00 || regexHeight === false){
-        alert('Digite uma altura valida')
+        heightValue.classList.add('wrong')
+        weigthValue.classList.add('wrong')
+        alert.style.display = 'block'
+        alert.innerHTML = 'Insira uma altura válida'
+        closeAlertMessage()
     }
 }
 

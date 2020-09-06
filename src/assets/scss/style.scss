@@ -36,6 +36,19 @@ $inputBGgColor: #F9F9F9;
     color: $colorSecondary;
 }
 
+.alert{
+    padding: 1rem;
+    margin: 0 0 2rem 0;
+    background-color: #ff9393;
+    border-radius: $borderRadiusDefault;
+    transition: 1s ease-in-out;
+    display: none;
+}
+
+.wrong {
+    box-shadow: 0px 0px 3px 1px rgb(112, 0, 0);
+}
+
 .large{
     width: 100%;
     font-size: 1.5rem;
