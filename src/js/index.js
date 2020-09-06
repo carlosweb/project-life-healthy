@@ -91,7 +91,6 @@ const validationForm = () => {
     }
     if(heightValue.value.replace(',', '.') > 3.00 || regexHeight === false){
         heightValue.classList.add('wrong')
-        weigthValue.classList.add('wrong')
         alert.style.display = 'block'
         alert.innerHTML = 'Insira uma altura válida'
         closeAlertMessage()
@@ -181,6 +180,8 @@ const resetFields = e => {
     age.value = ''
     weigthValue.value = ''
     heightValue.value = ''
+    heightValue.classList.remove('wrong')
+    weigthValue.classList.remove('wrong')
 }
 
 const render = () => {
