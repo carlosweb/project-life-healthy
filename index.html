@@ -29,25 +29,23 @@
         <section class="section-one">
             <div class="content">
                 <h1>Mantenha seu corpo e mente com saúde</h1>
-                <a href="" class="btn primary">Calcule seu IMC</a>
+                <a href="#teste" class="btn primary">Calcule seu IMC</a>
             </div>
         </section>
 
-        <section class="section-two">
+        <section class="section-two" id="teste">
             <div class="box-form">
                 <h2 data-anime="top">Calcule seu IMC</h2>
                 <div class="alert"></div>
-                <form action="">
+                <form class="form">
                     <label for="age">Digite a idade</label>
-                    <input type="number" name="age" id="age" placeholder="Digite sua idade" required autocomplete="off">
+                    <input type="number" name="age" id="age" placeholder="Digite sua idade" autocomplete="off">
                     <label for="weigthValue">Digite o Peso</label>
-                    <input type="number" name="weigthValue" id="weigthValue" placeholder="Digite o peso ex: 60" required
-                        autocomplete="off">
+                    <input type="number" name="weigthValue" id="weigthValue" placeholder="Digite o peso ex: 60" autocomplete="off">
                     <label for="heightValue">Digite a Altura</label>
-                    <input type="number" name="heightValue" id="heightValue" placeholder="Digite a altura ex: 1.70"
-                        required autocomplete="off">
+                    <input type="text" name="heightValue" id="heightValue" placeholder="Digite a altura ex: 1.70" autocomplete="off">
                     <a href="#" id="reset" onclick="resetFields()">Limpar Campos</a>
-                    <input type="submit" value="Calcular" id="result">
+                    <button class="btn secundary large" id="result"> Calcular</button>
                 </form>
             </div>
 
@@ -59,13 +57,13 @@
                 <div class="box-result"></div>
                 <div class="text-help">
                     <h1 data-anime="top">Deseja a ajuda de um profissional? </h1>
-                    <a href="#" class="btn secundary large">Consultar um profissional</a>
+                    <a href="#professional" class="btn secundary large">Consultar um profissional</a>
                 </div>
             </div>
         </section>
         <!-- section Three -->
         <section class="section-three">
-            <div class="box-goals">
+            <div class="box-goals" id="professional">
                 <h1>Escolha seu Objetivo</h1>
                 <div class="buttons-goals" data-anime="top">
                     <div class="bt-goal" id="loseWeight">
@@ -80,7 +78,7 @@
                         <h3>Definição</h3>
                         <i class="fas fa-child fa-3x"></i>
                     </div>
-                    <div class="bt-goal" id="bodyCare" data-anime="top">
+                    <div class="bt-goal" id="bodyCare" data-anime="top" id="#bodyCare">
                         <h3>Beleza/Estetica</h3>
                         <i class="fas fa-eye fa-3x"></i>
                     </div>
@@ -88,7 +86,7 @@
             </div>
             <div class="box-professionals">
                 <h1>Profissionais</h1>
-                <div class="buttons-professional">
+                <div class="buttons-professional" id="bodyCare">
                 </div>
             </div>
         </section>

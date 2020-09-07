@@ -168,7 +168,7 @@ const bodyCare = async () => {
     })
 }
 
-document.querySelector('#loseWeight').addEventListener('click', loseWeight)
+document.querySelector('#loseWeight').addEventListener('click', loseWeight, scrollToId)
 document.querySelector('#earnMuscle').addEventListener('click', earnMuscle)
 document.querySelector('#burnFat').addEventListener('click', burnFat)
 document.querySelector('#bodyCare').addEventListener('click', bodyCare)

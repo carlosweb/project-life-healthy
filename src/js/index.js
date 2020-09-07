@@ -53,8 +53,9 @@ if(target.length){
     window.addEventListener('scroll', animeScroll)
 }
 
+// --------------------------------------------------------------------
+
 const getImc = event => {
-    event.preventDefault()
     validationForm()
     total = Number(weigthValue.value) / Number(heightValue.value.replace(',', '.')) ** 2
     localStorage.setItem('IMC', total.toFixed(2))
@@ -173,8 +174,7 @@ const message = () => {
     })
 }
 
-const resetFields = e => {
-    e.preventDefault()
+const resetFields = () => {
     boxImage.style.display= 'block'
     box.style.display= 'none'
     age.value = ''
@@ -190,7 +190,91 @@ const render = () => {
     message()
 }
 
+
+// how work menu scroll 
+// const menuItems = document.querySelectorAll('.menu a[href^="#"')
+const allLinks = document.querySelectorAll('a[href^="#"')
+
+// menuItems.forEach(item => {
+//   item.addEventListener('click', scrollToId)
+// })
+
+allLinks.forEach(item => {
+  item.addEventListener('click', scrollToId)
+})
+
+function scrollToId(e) {
+  e.preventDefault()
+  const to = getScrollTopByHref(e.target) - 80
+  scrollToPosition(to)
+}
+
+// get position
+function scrollToPosition(to) {
+  // window.scroll( {
+  //   top: to,
+  //   behavior: "smooth",
+  // })
+  smoothScrollTo(0, to)
+}
+
+// get href
+function getScrollTopByHref(element) {
+  const id = element.getAttribute('href')
+  return document.querySelector(id).offsetTop
+}
+
+// support all old browsers 
+function smoothScrollTo(endX, endY, duration) {
+  const startX = window.scrollX || window.pageXOffset;
+  const startY = window.scrollY || window.pageYOffset;
+  const distanceX = endX - startX;
+  const distanceY = endY - startY;
+  const startTime = new Date().getTime();
+
+  duration = typeof duration !== 'undefined' ? duration : 400;
+
+  // Easing function
+  const easeInOutQuart = (time, from, distance, duration) => {
+    if ((time /= duration / 2) < 1) return distance / 2 * time * time * time * time + from;
+    return -distance / 2 * ((time -= 2) * time * time * time - 2) + from;
+  };
+
+  const timer = setInterval(() => {
+    const time = new Date().getTime() - startTime;
+    const newX = easeInOutQuart(time, startX, distanceX, duration);
+    const newY = easeInOutQuart(time, startY, distanceY, duration);
+    if (time >= duration) {
+      clearInterval(timer);
+    }
+    window.scroll(newX, newY);
+  }, 1000 / 60); // 60 fps
+};
+
+const form = document.querySelector('.form')
+console.log(form)
+
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    console.log(box.offsetTop)
+    scrollTo({
+                top: 1100,
+                behavior: 'smooth'
+            })
+    getImc()
+    
+})
+
 document.querySelector('#reset').addEventListener('click', resetFields)
-document.querySelector('#result').addEventListener('click', getImc)
+// result.addEventListener('click', getImc)
 
 
+// form.addEventListener('submit', event => {
+//     event.preventDefault()
+//     scrollTo({
+//         top: 0,
+//         left: 0,
+//         behavior: 'smooth'
+//     })
+   
+// })
