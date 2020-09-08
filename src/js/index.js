@@ -55,25 +55,20 @@ if(target.length){
 
 // --------------------------------------------------------------------
 
+
 const getImc = event => {
     validationForm()
     total = Number(weigthValue.value) / Number(heightValue.value.replace(',', '.')) ** 2
     localStorage.setItem('IMC', total.toFixed(2))
-    if (heightValue.value === '' || weigthValue.value === '' ) {
+    if (heightValue.value === '' && weigthValue.value === '' ) {
         heightValue.classList.add('wrong')
         weigthValue.classList.add('wrong')
         alert.style.display = 'block'
-        alert.innerHTML = 'Preencha os campos do peso e altura'
+        alert.innerHTML = '<i class="fas fa-exclamation-circle"></i> Preencha os campos do peso e altura'
         closeAlertMessage()
     }else{
         render()
     }
-}
-
-const closeAlertMessage = () => {
-    setTimeout(() => {
-        alert.style.display = 'none'
-    }, 4000)
 }
 
 const validationForm = () => {
@@ -81,22 +76,34 @@ const validationForm = () => {
     const regexHeight = regex.test(heightValue.value)
     const regexWeight = regex.test(weigthValue.value)
 
-    age.value > 102 ? age.classList.add('wrong') : age.value
-    // regexHeight === false ? alert('Digite uma altura valida') : regexHeight
+
+    if(age.value > 105){
+        age.classList.add('wrong')
+        alert.style.display = 'block'
+        alert.innerHTML = '<i class="fas fa-exclamation-circle"></i> Insira uma idade válida'
+        closeAlertMessage()
+    }
 
     if(weigthValue.value > 400  || regexWeight === false){
         weigthValue.classList.add('wrong')
         alert.style.display = 'block'
-        alert.innerHTML = 'Insira um peso válido'
+        alert.innerHTML = '<i class="fas fa-exclamation-circle"></i> Insira um peso válido'
         closeAlertMessage()
     }
     if(heightValue.value.replace(',', '.') > 3.00 || regexHeight === false){
         heightValue.classList.add('wrong')
         alert.style.display = 'block'
-        alert.innerHTML = 'Insira uma altura válida'
+        alert.innerHTML = ' <i class="fas fa-exclamation-circle"></i> Insira uma altura válida'
         closeAlertMessage()
     }
 }
+
+const closeAlertMessage = () => {
+    setTimeout(() => {
+        alert.style.display = 'none'
+    }, 5000)
+}
+
 
 const limites = [
     {
@@ -252,29 +259,20 @@ function smoothScrollTo(endX, endY, duration) {
 };
 
 const form = document.querySelector('.form')
-console.log(form)
 
 form.addEventListener('submit', event => {
     event.preventDefault()
-    console.log(box.offsetTop)
-    scrollTo({
-                top: 1100,
-                behavior: 'smooth'
+    if(event.target === true){
+        console.log(event.target)
+    }else{
+        // console.log(box.offsetTop)
+        scrollTo({
+            top: 1050,
+            behavior: 'smooth'
             })
-    getImc()
-    
+        getImc()
+    }
 })
 
+
 document.querySelector('#reset').addEventListener('click', resetFields)
-// result.addEventListener('click', getImc)
-
-
-// form.addEventListener('submit', event => {
-//     event.preventDefault()
-//     scrollTo({
-//         top: 0,
-//         left: 0,
-//         behavior: 'smooth'
-//     })
-   
-// })
